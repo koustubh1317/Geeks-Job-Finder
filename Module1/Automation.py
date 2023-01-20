@@ -1,4 +1,6 @@
 from Google.option import GoogleCareer
+from Amazon.option import AmazonCareer
+
 def main():
     print("WELCOME TO GEEKS JOB FINDER")
     print("PLEASE SELECT YOUR CATEGORY")   
@@ -17,6 +19,7 @@ def main():
        text="Internship"
     
     GoogleCareer(text)
+    AmazonCareer(text)
     print("Success")
     
 main()
