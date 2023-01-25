@@ -8,17 +8,22 @@ from lxml import etree
 import requests
   
   
-URL = "https://careers.microsoft.com/us/en/job/1514705/Senior-Product-Manager-CTJ-Poly"
+URL = "https://careers.google.com/jobs/results/87562051456508614-software-engineering-manager-ii-google-cloud/"
   
-response=requests.get(URL)
-soup=BeautifulSoup(response.text,'lxml')
-print(soup)
-N=soup.find_all('div',class_='job-other-info')
-print(N)
-dom=etree.HTML(str(soup))
-res=(dom.xpath('//*[@id="coreui-featuregroup-ydkoz9c"]/div/div[1]/h1'))
-print(res)
+from selenium import webdriver
+from bs4 import BeautifulSoup
 
+driver = webdriver.Chrome()
+driver.get(URL)
+page = driver.execute_script('return document.body.innerHTML')
+soup=BeautifulSoup(''.join(page), 'html.parser')
+print(soup)
+file1 = open("myfile.txt","w+")
+L = ["This is Delhi \n","This is Paris \n","This is London \n"] 
+  
+# \n is placed to indicate EOL (End of Line)
+file1.write("Hello \n")
+file1.writelines(soup.text)
 
 #r= urllib.request.urlopen('').read()
 #soup=BeautifulSoup(r, "lxml")
